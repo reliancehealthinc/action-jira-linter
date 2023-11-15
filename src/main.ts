@@ -25,9 +25,9 @@ const getInputs = (): JIRALintActionInputs => {
   const branchIgnorePattern: string = core.getInput('skip-branches', { required: false }) || '';
   const skipComments: boolean = core.getInput('skip-comments', { required: false }) === 'true';
   const prThreshold = parseInt(core.getInput('pr-threshold', { required: false }), 10);
-  const validateIssueStatus: boolean = core.getInput('validate-issue-status', { required: false }) === 'true';,
+  const validateIssueStatus: boolean = core.getInput('validate-issue-status', { required: false }) === 'true';
   const allowedIssueStatuses: string[] = core.getMultilineInput('allowed-issue-statuses');
-  const validateProject: boolean = core.getInput('validate-project', { required: false }) === 'true';,
+  const validateProject: boolean = core.getInput('validate-project', { required: false }) === 'true';
   const allowedProjects: string[] = core.getMultilineInput('allowed-projects');
   const failOnError: boolean = core.getInput('fail-on-error', { required: false }) !== 'false';
   const ignoredLabelTypes: string[] = core.getMultilineInput('ignored-label-types', { required: false });
