@@ -44,6 +44,7 @@ export class Jira {
 
   getTicketDetails = async (key: string): Promise<JIRADetails> => {
     try {
+      console.log("Checking issue");
       const issue: JIRA.Issue = await this.getIssue(key);
       const {
         fields: {
@@ -81,17 +82,20 @@ export class Jira {
         labels,
       };
     } catch (e) {
+      console.log("Exception handler for getTicketDetails");
       throw e;
     }
   };
 
   getIssue = async (id: string): Promise<JIRA.Issue> => {
     try {
+      console.log("In getIssue");
       const response = await this.client.get<JIRA.Issue>(
         `/issue/${id}?fields=project,summary,issuetype,labels,status,customfield_10016`
       );
       return response.data;
     } catch (e) {
+      console.log("In getIssue Exception Handler");
       throw e;
     }
   };
