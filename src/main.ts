@@ -154,9 +154,11 @@ async function run(): Promise<void> {
       return exit('JIRA issue id is missing in your branch.');
     }
 
+    console.log("Extra debug");
     // use the last match (end of the branch name)
     const issueKey = issueKeys[issueKeys.length - 1];
     console.log(`JIRA key -> ${issueKey}`);
+    console.log("Moar debug");
 
     const details: JIRADetails = await jira.getTicketDetails(issueKey);
     if (details.key) {
