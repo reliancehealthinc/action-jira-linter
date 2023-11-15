@@ -240,7 +240,8 @@ async function run(): Promise<void> {
       return exit('Invalid JIRA key. Please create a branch with a valid JIRA issue key in the name, or put a valid JIRA issue in the PR title.');
     }
   } catch (error) {
-    if (axios.isAxios(error) && error.response.status == 404) {
+    console.log("Checking Axis error");
+    if ( error.error && axios.isAxios(error.error) && error.error.response.status == 404) {
       const body = Jira.getNoIdComment();
       const comment = { ...commonPayload, body };
       await gh.upsertComment('no-id', comment);
@@ -248,6 +249,7 @@ async function run(): Promise<void> {
       // eslint-disable-next-line i18n-text/no-en
       return exit('Invalid JIRA key. Please create a branch with a valid JIRA issue key in the name, or put a valid JIRA issue in the PR title.');
     }
+    console.log("In main.ts error handler")
     console.log({ error });
 
     core.setFailed((error as Error)?.message ?? 'FATAL: An unknown error occurred');
