@@ -4,7 +4,7 @@ on:
     branches: [main]
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       repo: btwrk/action-jira-linter-test
       branch_name: feature/dx-1905_${{ github.sha }}
